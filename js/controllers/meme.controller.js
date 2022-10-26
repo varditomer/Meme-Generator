@@ -27,7 +27,7 @@ function renderMeme(imgIdx) {
 
 }
 
-function drawImg(imgUrl = '/images/meme-imgs (square)/1.jpg') {
+function drawImg(imgUrl = './images/meme-imgs (square)/0.jpg') {
     console.log(`imgUrl:`, imgUrl)
     const img = new Image() // Create a new html img element
     img.src = imgUrl // Send a network req to get that image, define the img src
