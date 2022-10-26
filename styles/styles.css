@@ -1,0 +1,317 @@
+:root {
+    /* pallet */
+    --clr1: #040a2c;
+    --clr2: #e3e3e3;
+    --clr3: #ff7f00;
+    --clr4: #8a8a8a;
+    --clr-1: #000;
+    --clr-2: #fff;
+
+    /* BP */
+    --l: 1200px;
+    --m: 860px;
+    --s: 600px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* TYPOGRAPHY */
+
+@font-face {
+    font-family: playfair, 'Times New Roman', Times, serif;
+    src: url(/fonts/Playfair/PlayfairDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: ubuntu, Arial, Helvetica, sans-serif;
+    src: url(/fonts/Ubuntu/Ubuntu-Light.ttf);
+}
+
+@font-face {
+    font-family: inconsolata, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    src: url(/fonts/Inconsolata/Inconsolata-Regular.ttf);
+}
+
+@font-face {
+    font-family: impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    src: url(/fonts/Impact/impact.ttf);
+}
+
+/* Montserrat */
+@font-face {
+    font-family: montserrat-regular, Arial, Helvetica, sans-serif;
+    src: url(/fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: montserrat-medium, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    src: url(/fonts/Montserrat/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: montserrat-bold;
+    src: url(/fonts/Montserrat/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: montserrat-thin;
+    src: url(/fonts/Montserrat/Montserrat-Thin.ttf);
+}
+
+
+
+
+/* BASICS  */
+
+html {
+    color: var(--clr1);
+    font-family: montserrat-regular;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1em;
+}
+
+h2 {}
+
+body {
+    margin: 0;
+
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    color: var(--clr-2);
+}
+
+/* HELPERS */
+
+/* flex helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.col {
+    flex-direction: column;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.space-around {
+    justify-content: space-around;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+/* list helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* COMPONENTS */
+
+
+.main-screen {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 50%);
+    /* display: none; */
+    opacity: 0;
+
+    transition: opacity .6s;
+    pointer-events: none;
+}
+
+body.menu-open .main-screen {
+    /* display: block; */
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* logo */
+
+
+.logo img {
+    max-height: 30px;
+}
+
+/* header  */
+
+.main-header {
+    min-height: 66px;
+    background-color: var(--clr3);
+    padding: 0 50px;
+}
+
+.main-header .main-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.1875em;
+}
+
+.main-header .main-nav .seperator {
+    color: var(--clr4);
+    
+}
+
+
+.main-header .main-nav a:hover {
+    color: var(--clr-2);
+}
+
+/* Image-Gallery */
+
+.image-gallery .gallery-header {
+    min-height: 100px;
+    background-color: var(--clr-2);
+    padding: 0 50px;
+
+}
+
+.image-gallery .gallery-header ul > *:not(:last-child) {
+    padding: 0 31px;
+    font-size: 1.1875em;
+}
+
+.gallery-header ul .more {
+    text-decoration: underline;
+}
+
+.image-gallery .image-gallery-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 20px 20px 10px 20px;
+    row-gap: 10px;
+    column-gap: 20px;
+    background-color: var(--clr2);
+}
+
+/* Meme-Editor */
+.meme-editor {
+    background-color: var(--clr2);
+    padding: 25px 0;
+}
+
+/* canvas */
+.canvas-container {
+    border: 2px solid var(--clr1);
+
+}
+
+/* control box */
+
+.control-box {
+    min-width: 373px;
+
+}
+
+.control-box button {
+    cursor: pointer;
+}
+
+.control-box button :not(.posting-btns) {
+    height: 60px;
+    width: 60px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--clr-2);
+}
+
+.control-box > *:not(:last-child) {
+    margin-bottom: 30px;
+    gap: 10px
+}
+
+.control-box .meme-lines-control, .text-size-and-align, .font-and-color {
+    gap: 18px;
+}
+
+.control-box .stickers-picker {
+    min-height: 135px;
+    background-color: var(--clr-2);
+}
+
+.control-box .posting-btns >* {
+    background-color: var(--clr3);
+    font-family: montserrat-medium;
+    color: var(--clr-2);
+    border: none;
+    border-radius: 12px;
+    height: 60px;
+    width: 120px;
+    font-size: 1.25em;
+    font-weight: 500;
+
+
+
+}
+
+/* footer */
+.main-footer {
+    min-height: 207px;
+    background-color: var(--clr3);
+}
+
+.main-footer p {
+    font-family: montserrat-thin;
+    font-size: 1.1875em;
+    color: var(--clr-2);
+}
+
+
+/* SMALL */
+@media (min-width: 640px) {
+    .main-layout{
+        max-width: var(--s);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* MEDIUM */
+@media (min-width: 900px) {
+    .main-layout {
+        max-width: var(--m);
+    }
+
+    h2 {
+        font-size: 2.1428571em;
+    }
+
+    .main-header .main-nav li:not(:last-child) {
+        margin-inline-end: 14px;
+    }
+}
+
+/* LARGE */
+@media (min-width: 1100px) {
+    .main-layout {
+        max-width: var(--l);
+    }
+
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body class="main-layout" onload="init()">
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+    <header class="main-header flex space-between align-center">
+        <div class="logo"><img src="/images/logo/LOGO.png" alt="memegen"></div>
+        <nav class="main-nav">
+            <ul class="flex clean-list">
+                <li><a href="#">Gallery</a></li>
+                <li class="seperator">|</li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- style="display: none;" -->
+        <section class="image-gallery">
+            <header class="gallery-header flex space-between align-center">
+                <div class="search"><input type="text" class="search-input" placeholder="Enter Search Keyword 🔍"></div>
+                <div class="hot-words">
+                    <ul class="flex clean-list">
+                        <li>funny</li>
+                        <li>comics</li>
+                        <li>dogs</li>
+                        <li>drinks</li>
+                        <li>books</li>
+                        <li class="more">more..</li>
+                    </ul>
+                </div>
+            </header>
+            <div class="image-gallery-area">
+                <div><img src="/images/meme-imgs (square)/1.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/2.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/3.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/4.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/5.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/6.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/7.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/8.jpg" alt=""></div>
+                <div><img src="/images/meme-imgs (square)/9.jpg" alt=""></div>
+            </div>
+
+        </section>
+        <section class="meme-editor flex space-around">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="552" width="545"></canvas>
+            </div>
+            <div class="control-box flex col space-between">
+
+                <div class="meme-lines flex col center">
+                    <input type="text" class="meme-txt" placeholder="Enter Meme Text">
+                    <div class="meme-lines-control flex center">
+                        <button class="switch"><img src="/images/app/control-box/switch.svg" alt=""></button>
+                        <button class="add"><img src="/images/app/control-box/add.svg" alt=""></button>
+                        <button class="remove"><img src="/images/app/control-box/trash.svg" alt=""></button>
+                    </div>
+                </div>
+
+                <div class="meme-lines flex col center">
+                    <div class="text-size-and-align flex center">
+                        <button class="increase"><img src="/images/app/control-box/increase_font.svg" alt=""></button>
+                        <button class="decrease"><img src="/images/app/control-box/decrease_font.svg" alt=""></button>
+                        <button class="align-left"><img src="/images/app/control-box/align-to-left.svg" alt=""></button>
+                        <button class="align-center"><img src="/images/app/control-box/center-text-alignment.svg"
+                                alt=""></button>
+                        <button class="align-right"><img src="/images/app/control-box/align-to-right.svg"
+                                alt=""></button>
+                    </div>
+                    <div class="font-and-color flex center">
+                        <select name="fonts" id="fonts">
+                            <option value="impact">Impact</option>
+                            <option value="montserrat">Montserrat</option>
+                            <option value="playfair">playfair</option>
+                            <option value="ubuntu">ubuntu</option>
+                            <option value="inconsolata">inconsolata</option>
+                        </select>
+                        <button class="font-color"><img src="/images//app/control-box/A.svg" alt=""></button>
+                        <button class="color"><img src="/images/app/control-box/paint-board-and-brush.svg" alt=""></button>
+                    </div>
+                </div>
+
+                <div class="stickers-picker flex">
+                    <img src="/images/app/control-box/swipe-left.svg" alt="">
+                    <img src="/images/app/control-box/gift.svg" alt="">
+                    <img src="/images/app/control-box/hut.svg" alt="">
+                    <img src="/images/app/control-box/face.svg" alt="">
+                    <img src="/images/app/control-box/swipe-right.svg" alt="">
+                </div>
+
+                <div class="posting-btns flex space-between">
+                    <button class="download">Download</button>
+                    <button class="share">Share</button>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <footer class="main-footer flex col center align-center">
+        <div class="logo"><img src="/images/logo/LOGO.png" alt="memegen"></div>
+
+        <p>all rights reserved Tomer 2022 &copy; </p>
+        
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+    </script>
+
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
