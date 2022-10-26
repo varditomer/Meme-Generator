@@ -15,7 +15,7 @@
         <div class="logo"><img src="/images/logo/LOGO.png" alt="memegen"></div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><a href="#">Gallery</a></li>
+                <li onclick="onGalleryClicked()"><a href="#">Gallery</a></li>
                 <li class="seperator">|</li>
                 <li><a href="#">About</a></li>
             </ul>
@@ -39,19 +39,12 @@
                 </div>
             </header>
             <div class="image-gallery-area">
-                <div><img src="/images/meme-imgs (square)/1.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/2.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/3.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/4.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/5.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/6.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/7.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/8.jpg" alt=""></div>
-                <div><img src="/images/meme-imgs (square)/9.jpg" alt=""></div>
+
             </div>
 
         </section>
-        <section class="meme-editor flex space-around">
+        <section class="meme-editor flex space-around hide">
+
             <div class="canvas-container">
                 <canvas id="my-canvas" height="552" width="545"></canvas>
             </div>
@@ -85,7 +78,8 @@
                             <option value="inconsolata">inconsolata</option>
                         </select>
                         <button class="font-color"><img src="/images//app/control-box/A.svg" alt=""></button>
-                        <button class="color"><img src="/images/app/control-box/paint-board-and-brush.svg" alt=""></button>
+                        <button class="color"><img src="/images/app/control-box/paint-board-and-brush.svg"
+                                alt=""></button>
                     </div>
                 </div>
 
@@ -104,7 +98,6 @@
 
             </div>
 
-
         </section>
 
 
@@ -115,7 +108,7 @@
         <div class="logo"><img src="/images/logo/LOGO.png" alt="memegen"></div>
 
         <p>all rights reserved Tomer 2022 &copy; </p>
-        
+
     </footer>
 
     <script>

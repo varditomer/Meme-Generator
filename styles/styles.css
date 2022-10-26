@@ -211,7 +211,13 @@ body.menu-open .main-screen {
     background-color: var(--clr2);
 }
 
+.image-gallery .image-gallery-area img {
+    cursor: pointer;
+}
+
+
 /* Meme-Editor */
+
 .meme-editor {
     background-color: var(--clr2);
     padding: 25px 0;
@@ -220,6 +226,7 @@ body.menu-open .main-screen {
 /* canvas */
 .canvas-container {
     border: 2px solid var(--clr1);
+    display: block;
 
 }
 
@@ -314,4 +321,8 @@ body.menu-open .main-screen {
         max-width: var(--l);
     }
 
+}
+
+.hide {
+    display: none !important;
 }
