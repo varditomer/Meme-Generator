@@ -60,9 +60,6 @@
     src: url(/fonts/Montserrat/Montserrat-Thin.ttf);
 }
 
-
-
-
 /* BASICS  */
 
 html {
@@ -79,11 +76,8 @@ h6 {
     margin: 0 0 1em;
 }
 
-h2 {}
-
 body {
     margin: 0;
-
 }
 
 img {
@@ -97,7 +91,6 @@ a {
 /* HELPERS */
 
 /* flex helpers */
-
 .flex {
     display: flex;
 }
@@ -123,7 +116,6 @@ a {
 }
 
 /* list helpers */
-
 .clean-list {
     margin: 0;
     padding: 0;
@@ -132,35 +124,12 @@ a {
 
 /* COMPONENTS */
 
-
-.main-screen {
-    position: fixed;
-    inset: 0;
-    background-color: rgb(0 0 0 / 50%);
-    /* display: none; */
-    opacity: 0;
-
-    transition: opacity .6s;
-    pointer-events: none;
-}
-
-body.menu-open .main-screen {
-    /* display: block; */
-    cursor: pointer;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-
 /* logo */
-
-
 .logo img {
     max-height: 30px;
 }
 
 /* header  */
-
 .main-header {
     min-height: 66px;
     background-color: var(--clr3);
@@ -177,7 +146,6 @@ body.menu-open .main-screen {
     color: var(--clr4);
     
 }
-
 
 .main-header .main-nav a:hover {
     color: var(--clr-2);
@@ -225,7 +193,7 @@ body.menu-open .main-screen {
 
 /* canvas */
 .canvas-container {
-    border: 2px solid var(--clr1);
+    /* border: 2px solid var(--clr1); */
     display: block;
 
 }
@@ -289,7 +257,6 @@ body.menu-open .main-screen {
     font-size: 1.1875em;
     color: var(--clr-2);
 }
-
 
 /* SMALL */
 @media (min-width: 640px) {

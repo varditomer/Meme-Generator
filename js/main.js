@@ -5,7 +5,6 @@ function init() {
 }
 
 function switchToMemeEditor(imgIdx) {
-    console.log(`imgIdx:`, imgIdx)
     initMeme(imgIdx)
 }
 

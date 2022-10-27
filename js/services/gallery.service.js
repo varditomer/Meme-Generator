@@ -102,3 +102,7 @@ function getImgUrl(imgIdx) {
     const img = gImgs.find(img=>img.id === imgIdx)
     return img.url
 }
+
+function getgKeywordSearchCountMap() {
+    return gKeywordSearchCountMap
+}
