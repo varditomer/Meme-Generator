@@ -4,7 +4,7 @@ const gElGallerySection = document.querySelector('.image-gallery')
 
 function initGallery() {
     if (gElGallerySection.classList.contains('hide')) gElGallerySection.classList.remove('hide')
-    resizeKeyWords()
+    // resizeKeyWords()
     renderGallery()
 }
 
@@ -24,7 +24,6 @@ function renderGallery() {
 function onImgSelected(idx) {
     gElGallerySection.classList.add('hide')
     switchToMemeEditor(idx)
-
 }
 
 function resizeKeyWords() {
