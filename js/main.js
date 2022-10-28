@@ -12,6 +12,7 @@ function switchToMemeEditor(imgIdx) {
 function onNavToGallery() {
     hideMemeEditorSection()
     markGalleryNavLink()
+    showGallerySection()
     initGallery()
 }
 

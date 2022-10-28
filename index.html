@@ -47,52 +47,63 @@
 
                     <div class="canvas-container">
                         <div class="line-highlighter"></div>
-                        <canvas id="my-canvas" height="500" width="500" onclick="draw(event)"></canvas>
+                        <canvas id="my-canvas" height="500" width="500"></canvas>
                     </div>
                     <div class="control-box flex col space-between">
 
-                        <div class="meme-lines flex col center">
-                            <input type="text" class="meme-txt" placeholder="I sometimes eat Falafel"
-                                oninput="onInputMemeLineText(event)">
-                            <div class="meme-lines-control flex center">
-                                <button class="switch" onclick="onSwitchLine()"><img src="./images/app/control-box/switch.svg" alt=""></button>
-                                <button class="add"><img src="./images/app/control-box/add.svg" alt=""></button>
-                                <button class="remove"><img src="./images/app/control-box/trash.svg" alt=""></button>
-                            </div>
-                        </div>
-
-                        <div class="meme-lines flex col center">
-                            <div class="text-size-and-align flex center">
-                                <button class="increase" onclick="onChangeFSize(1)"><img
-                                        src="./images/app/control-box/increase_font.svg" alt=""></button>
-                                <button class="decrease" onclick="onChangeFSize(-1)"><img
-                                        src="./images/app/control-box/decrease_font.svg" alt=""></button>
-                                <button class="align-left"><img src="./images/app/control-box/align-to-left.svg"
-                                        alt=""></button>
-                                <button class="align-center"><img
-                                        src="./images/app/control-box/center-text-alignment.svg" alt=""></button>
-                                <button class="align-right"><img src="./images/app/control-box/align-to-right.svg"
-                                        alt=""></button>
-                            </div>
-                            <div class="font-and-color flex center">
-                                <!-- <select name="fonts" id="fonts">
-                                    <option value="impact">Impact</option>
-                                    <option value="montserrat">Montserrat</option>
-                                    <option value="playfair">playfair</option>
-                                    <option value="ubuntu">ubuntu</option>
-                                    <option value="inconsolata">inconsolata</option>
-                                </select> -->
-                                <div style="position:relative; display:inline-block">
-                                    <button class="fill-color"><img src="./images/app/control-box/paint-board-and-brush.svg"
-                                            alt=""></button>
-                                    <input class="fill-color-selector" type="color" value="#ff0000"
-                                        style="opacity:0; position:absolute; left:0;top:0;width:100%" oninput="onSetFill(event)"/>
+                        <div class="meme-handlers">
+                            <div class="meme-lines flex col center">
+                                <input type="text" class="meme-txt" placeholder="I sometimes eat Falafel"
+                                    oninput="onInputMemeLineText(event)">
+                                <div class="meme-lines-control flex center">
+                                    <button class="switch" onclick="onSwitchLine()"><img
+                                            src="./images/app/control-box/switch.svg" alt=""></button>
+                                    <button class="add" onclick="onAddLine()"><img
+                                            src="./images/app/control-box/add.svg" alt=""></button>
+                                    <button class="remove" onclick="onRemoveLine()"><img
+                                            src="./images/app/control-box/trash.svg" alt=""></button>
+                                    <button title="Resetore default meme lines" class="reset-meme-lines"
+                                        onclick="onRestoreDefaultMemeLines()"><img
+                                            src="./images/app/control-box/reset_default.svg" alt=""></button>
                                 </div>
-                                <div style="position:relative; display:inline-block">
-                                    <button class="stroke-color"><img src="./images/app/control-box/A.svg"
-                                            alt=""></button>
-                                    <input type="color" class="stroke-color-selector" value="#ff0000"
-                                        style="opacity:0; position:absolute; left:0;top:0;width:100%" oninput="onSetSroke(event)"/>
+                            </div>
+
+                            <div class="meme-lines flex col center">
+                                <div class="text-size-and-align flex center">
+                                    <button class="increase" onclick="onChangeFSize(1)"><img
+                                            src="./images/app/control-box/increase_font.svg" alt=""></button>
+                                    <button class="decrease" onclick="onChangeFSize(-1)"><img
+                                            src="./images/app/control-box/decrease_font.svg" alt=""></button>
+                                    <button class="align-left" onclick="onAlignLineTxt('start')"><img
+                                            src="./images/app/control-box/align-to-left.svg" alt=""></button>
+                                    <button class="align-center" onclick="onAlignLineTxt('center')"><img
+                                            src="./images/app/control-box/center-text-alignment.svg" alt=""></button>
+                                    <button class="align-right" onclick="onAlignLineTxt('end')"><img
+                                            src="./images/app/control-box/align-to-right.svg" alt=""></button>
+                                </div>
+                                <div class="font-and-color flex center">
+                                    <select name="fonts" id="fonts" class="fonts" oninput="onSelectFont(event)">
+                                        <option value="impact">Impact</option>
+                                        <option value="montserrat">Montserrat</option>
+                                        <option value="playfair">playfair</option>
+                                        <option value="ubuntu">ubuntu</option>
+                                        <option value="inconsolata">inconsolata</option>
+                                    </select>
+                                    <div style="position:relative; display:inline-block">
+                                        <button class="fill-color"><img
+                                                src="./images/app/control-box/paint-board-and-brush.svg"
+                                                alt=""></button>
+                                        <input class="fill-color-selector" type="color" value="#ff0000"
+                                            style="opacity:0; position:absolute; left:0;top:0;width:100%"
+                                            oninput="onSetFill(event)" />
+                                    </div>
+                                    <div style="position:relative; display:inline-block">
+                                        <button class="stroke-color"><img src="./images/app/control-box/A.svg"
+                                                alt=""></button>
+                                        <input type="color" class="stroke-color-selector" value="#ff0000"
+                                            style="opacity:0; position:absolute; left:0;top:0;width:100%"
+                                            oninput="onSetSroke(event)" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +144,8 @@
 
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/services/dragAndDrop.service.js"></script>
+    <script src="js/controllers/drahAndDrop.controller.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
     <script src="js/main.js"></script>

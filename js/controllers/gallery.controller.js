@@ -38,6 +38,10 @@ function hideGallerySection() {
     gElGallerySection.classList.add('hide')
 }
 
+function showGallerySection() {
+    gElGallerySection.classList.remove('hide')
+}
+
 function unmarkGalleryNavLink() {
     document.querySelector('.main-nav ul .gallery').classList.remove('active')
 }
