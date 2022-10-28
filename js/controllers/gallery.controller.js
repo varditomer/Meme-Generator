@@ -1,9 +1,11 @@
 'use strict'
 
-const gElGallerySection = document.querySelector('.image-gallery')
+let gElGallerySection //el gallerySection
 
 function initGallery() {
-    if (gElGallerySection.classList.contains('hide')) gElGallerySection.classList.remove('hide')
+    // Init Selectors
+    gElGallerySection = document.querySelector('.image-gallery')
+    
     // resizeKeyWords()
     renderGallery()
 }
@@ -18,15 +20,28 @@ function renderGallery() {
     ).join('')
 
     gElGallerySection.querySelector('.image-gallery-area').innerHTML = strHtmls
-
 }
 
 function onImgSelected(idx) {
-    gElGallerySection.classList.add('hide')
+    hideGallerySection()
+    unmarkGalleryNavLink()
     switchToMemeEditor(idx)
 }
 
 function resizeKeyWords() {
     gKeywordSearchCountMap = getgKeywordSearchCountMap
     //Todo: replace key words from hard coded in html to rendom function with font size by the count map
+}
+
+// Hide gallery section and unmark gallery's nav link
+function hideGallerySection() {
+    gElGallerySection.classList.add('hide')
+}
+
+function unmarkGalleryNavLink() {
+    document.querySelector('.main-nav ul .gallery').classList.remove('active')
+}
+
+function markGalleryNavLink() {
+    document.querySelector('.main-nav ul .gallery').classList.add('active')
 }

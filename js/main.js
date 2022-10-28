@@ -1,17 +1,17 @@
 'use strict'
+// main controller: handle switching between the sections and everything beside gallery&meme sections
 
 function init() {
     initGallery()
 }
 
 function switchToMemeEditor(imgIdx) {
-    document.querySelector('.main-nav ul .gallery').classList.remove('active')
     initMeme(imgIdx)
 }
 
-function onGalleryClicked() {
+function onNavToGallery() {
     hideMemeEditorSection()
-    document.querySelector('.main-nav ul .gallery').classList.add('active')
+    markGalleryNavLink()
     initGallery()
 }
 

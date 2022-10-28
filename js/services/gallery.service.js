@@ -1,6 +1,5 @@
 'use strict'
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 var gImgs = [
     {
         id: 0,
@@ -94,6 +93,10 @@ var gImgs = [
     },
 ]
 
+var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+
+// Getteres
 function getImgs() {
     return gImgs
 }

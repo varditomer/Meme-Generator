@@ -17,7 +17,7 @@
             <div class="logo"><img src="./images/logo/LOGO.png" alt="memegen"></div>
             <nav class="main-nav">
                 <ul class="flex align-center clean-list">
-                    <li onclick="onGalleryClicked()"><a href="#" class="gallery active">Gallery</a></li>
+                    <li onclick="onNavToGallery()"><a href="#" class="gallery active">Gallery</a></li>
                 </ul>
             </nav>
         </header>
@@ -53,7 +53,7 @@
 
                         <div class="meme-lines flex col center">
                             <input type="text" class="meme-txt" placeholder="I sometimes eat Falafel"
-                                oninput="onInputMemeText(event)">
+                                oninput="onInputMemeLineText(event)">
                             <div class="meme-lines-control flex center">
                                 <button class="switch" onclick="onSwitchLine()"><img src="./images/app/control-box/switch.svg" alt=""></button>
                                 <button class="add"><img src="./images/app/control-box/add.svg" alt=""></button>
