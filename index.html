@@ -23,24 +23,15 @@
         </header>
 
         <main class="main-content">
+
             <section class="image-gallery">
-                <header class="gallery-header flex space-between align-center">
-                    <div class="search"><input type="text" class="search-input" placeholder="Enter Search Keyword 🔍">
-                    </div>
-                    <div class="hot-words">
-                        <ul class="flex clean-list">
-                            <li>funny</li>
-                            <li>comics</li>
-                            <li>dogs</li>
-                            <li>cats</li>
-                            <li>baby</li>
-                            <li class="more">more..</li>
-                        </ul>
+                <header class="gallery-header flex col center align-center">
+                    <div class="search"><input type="text" class="search-input" placeholder="Enter Search Keyword 🔍" oninput="onSetFilterBy(this.value)">
                     </div>
                 </header>
                 <div class="image-gallery-area"></div>
-
             </section>
+
             <section class="meme-editor hide">
 
                 <div class="editor-container flex col space-evenly">
@@ -56,11 +47,11 @@
                                 <input type="text" class="meme-txt" placeholder="I sometimes eat Falafel"
                                     oninput="onInputMemeLineText(event)">
                                 <div class="meme-lines-control flex center">
-                                    <button class="switch" onclick="onSwitchLine()"><img
+                                    <button class="switch" title="switch selected line" onclick="onSwitchLine()"><img
                                             src="./images/app/control-box/switch.svg" alt=""></button>
-                                    <button class="add" onclick="onAddLine()"><img
+                                    <button class="add" title="add new line" onclick="onAddLine()"><img
                                             src="./images/app/control-box/add.svg" alt=""></button>
-                                    <button class="remove" onclick="onRemoveLine()"><img
+                                    <button class="remove" title="remove line" onclick="onRemoveLine()"><img
                                             src="./images/app/control-box/trash.svg" alt=""></button>
                                     <button title="Resetore default meme lines" class="reset-meme-lines"
                                         onclick="onRestoreDefaultMemeLines()"><img
@@ -70,19 +61,23 @@
 
                             <div class="meme-lines flex col center">
                                 <div class="text-size-and-align flex center">
-                                    <button class="increase" onclick="onChangeFSize(1)"><img
+                                    <button class="increase" title="increase line size" onclick="onChangeFSize(1)"><img
                                             src="./images/app/control-box/increase_font.svg" alt=""></button>
-                                    <button class="decrease" onclick="onChangeFSize(-1)"><img
+                                    <button class="decrease" title="decrease line size" onclick="onChangeFSize(-1)"><img
                                             src="./images/app/control-box/decrease_font.svg" alt=""></button>
-                                    <button class="align-left" onclick="onAlignLineTxt('start')"><img
+                                    <button class="align-left" title="align line to left"
+                                        onclick="onAlignLineTxt('start')"><img
                                             src="./images/app/control-box/align-to-left.svg" alt=""></button>
-                                    <button class="align-center" onclick="onAlignLineTxt('center')"><img
+                                    <button class="align-center" title="align line to center"
+                                        onclick="onAlignLineTxt('center')"><img
                                             src="./images/app/control-box/center-text-alignment.svg" alt=""></button>
-                                    <button class="align-right" onclick="onAlignLineTxt('end')"><img
+                                    <button class="align-right" title="aline line to right"
+                                        onclick="onAlignLineTxt('end')"><img
                                             src="./images/app/control-box/align-to-right.svg" alt=""></button>
                                 </div>
                                 <div class="font-and-color flex center">
-                                    <select name="fonts" id="fonts" class="fonts" oninput="onSelectFont(event)">
+                                    <select name="fonts" title="select font" id="fonts" class="fonts"
+                                        oninput="onSelectFont(event)">
                                         <option value="impact">Impact</option>
                                         <option value="montserrat">Montserrat</option>
                                         <option value="playfair">playfair</option>
@@ -93,14 +88,16 @@
                                         <button class="fill-color"><img
                                                 src="./images/app/control-box/paint-board-and-brush.svg"
                                                 alt=""></button>
-                                        <input class="fill-color-selector" type="color" value="#ff0000"
+                                        <input class="fill-color-selector" title="select line text fill color"
+                                            type="color" value="#ff0000"
                                             style="opacity:0; position:absolute; left:0;top:0;width:100%"
                                             oninput="onSetFill(event)" />
                                     </div>
                                     <div style="position:relative; display:inline-block">
                                         <button class="stroke-color"><img src="./images/app/control-box/A.svg"
                                                 alt=""></button>
-                                        <input type="color" class="stroke-color-selector" value="#ff0000"
+                                        <input type="color" class="stroke-color-selector"
+                                            title="select line text stroke color" value="#ff0000"
                                             style="opacity:0; position:absolute; left:0;top:0;width:100%"
                                             oninput="onSetSroke(event)" />
                                     </div>
@@ -108,44 +105,36 @@
                             </div>
                         </div>
 
-                        <!-- <div class="stickers-picker flex">
-                    <img src="./images/app/control-box/swipe-left.svg" alt="">
-                    <img src="./images/app/control-box/gift.svg" alt="">
-                    <img src="./images/app/control-box/hut.svg" alt="">
-                    <img src="./images/app/control-box/face.svg" alt="">
-                    <img src="./images/app/control-box/swipe-right.svg" alt="">
-                </div> -->
-
                         <div class="posting-btns flex space-between">
-                            <button class="download"><a href="#" onclick="onDownloadCanvas(this)"
-                                    download="file-name">Download</a>
+                            <button class="download" title="download canvas"><a href="#"
+                                    onclick="onDownloadCanvas(this)" download="file-name">Download</a>
                             </button>
-                            <button class="share">Share</button>
+                            <button class="upload" title="upload canvas" onclick="uploadImg(); onupload()">Upload</button>
+                            <button class="share" title="share: first click upload">Share</button>
                         </div>
 
                     </div>
 
                 </div>
 
-            </section>
+                <p class="user-msg"></p>
 
+            </section>
 
         </main>
 
 
         <footer class="main-footer flex col center align-center">
             <div class="logo"><img src="./images/logo/LOGO.png" alt="memegen"></div>
-
             <p>all rights reserved <strong>Tomer Vardi</strong> 2022 &copy; </p>
-
         </footer>
 
     </div>
 
     <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/services/upload.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/services/dragAndDrop.service.js"></script>
-    <script src="js/controllers/drahAndDrop.controller.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
     <script src="js/main.js"></script>

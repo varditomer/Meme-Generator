@@ -1,29 +1,36 @@
 'use strict'
 
 //Check if the click is inside lines
-function isAlineClicked(clickedPos) {
-    const {lines} = getMeme().lines
-    const clickedLine = -1
-    lines.forEach((line,idx) => {
-        if(isLineClicked(clickedPos, line))
-        clickedLine=idx
+function isAlineClicked(clickedPos, canvaContainerWidth) {
+    const { lines } = getMeme()
+    let clickedLineIdx = -1
+    lines.forEach((line, idx) => {
+        if (isLineClicked(clickedPos, line, canvaContainerWidth)) return clickedLineIdx=idx
     });
-    return clickedLine
+    return clickedLineIdx
 }
 
-function isLineClicked(clickedPos, line) {
+function isLineClicked(clickedPos, line, canvaContainerWidth) {
     const { pos, size } = line
-    //If clickedPos <= pos.y+line.size && clickedPos > =pos.y
-    return (clickedPos <= pos.y + size && clickedPos >= pos.y)
+    // if click was inside one of the lines y limits (pos.y - size)
+    return (clickedPos.y >= pos.y - size && clickedPos.y <= pos.y && clickedPos.x >= pos.x - size && clickedPos.x <= canvaContainerWidth)
 }
 
-function setCircleDrag(isDrag) {
-    gCircle.isDrag = isDrag
+function lineDragIdx() {
+    const { lines } = getMeme()
+    const dragedLineIdx = lines.findIndex(line => line.isDrag)
+    return dragedLineIdx
 }
 
-//Move the circle in a delta, diff from the pervious pos
-function moveCircle(dx, dy) {
-    gCircle.pos.x += dx
-    gCircle.pos.y += dy
+function setIsLineDrag(clickedLineIdx, bool) {
+    const { lines } = getMeme()
+    lines[clickedLineIdx].isDrag = bool
+}
 
+//Move the line in a delta, diff from the pervious pos
+function moveLine(dx,dy) {
+    const { lines } = getMeme()
+    const dragedLineIdx = lines.findIndex(line => line.isDrag)
+    lines[dragedLineIdx].pos.x += dx
+    lines[dragedLineIdx].pos.y += dy
 }

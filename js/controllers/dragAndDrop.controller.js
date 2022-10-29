@@ -56,7 +56,7 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-  console.log('Im from onDown')
+  ('Im from onDown')
   //Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
   if (!isCircleClicked(pos)) return
@@ -67,7 +67,7 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-  console.log('Im from onMove')
+  // console.log('Im from onMove')
   const { isDrag } = getCircle()
   if (!isDrag) return
   const pos = getEvPos(ev)
@@ -83,7 +83,7 @@ function onMove(ev) {
 }
 
 function onUp() {
-  console.log('Im from onUp')
+  // console.log('Im from onUp')
   setCircleDrag(false)
   document.body.style.cursor = 'grab'
 }

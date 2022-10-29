@@ -7,6 +7,9 @@ let gCtx //canvas context selector
 let gElLineHighlighter //el canvas line-highlighter
 let gImg
 
+let gStartPos
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
 function initMeme(imgIdx) {
     // Init Selectors
     gElMemeSection = document.querySelector('.meme-editor')
@@ -14,6 +17,7 @@ function initMeme(imgIdx) {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
     gElLineHighlighter = gElCanvasContainer.querySelector('.line-highlighter')
+    document.querySelector('.share').style.cursor="not-allowed"
 
 
 
@@ -52,7 +56,6 @@ function renderMeme() {
     }
 }
 
-//Handle the listeners
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
@@ -63,33 +66,80 @@ function addListeners() {
     })
 }
 
+// Drag And Drop
 function addMouseListeners() {
-    gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mousedown', onDown)
-    gElCanvas.addEventListener('mouseup', onUp)
+    gElCanvasContainer.addEventListener('mousemove', onMove)
+    gElCanvasContainer.addEventListener('mousedown', onDown)
+    gElCanvasContainer.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
-    gElCanvas.addEventListener('touchmove', onMove)
-    gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchend', onUp)
+    gElCanvasContainer.addEventListener('touchmove', onMove)
+    gElCanvasContainer.addEventListener('touchstart', onDown)
+    gElCanvasContainer.addEventListener('touchend', onUp)
 }
 
 function onDown(ev) {
-    console.log('Im from onDown')
-
-
+    gElCanvasContainer.classList.add('grabbing')
+    // console.log('Im from onDown')
+    //Get the ev pos from mouse or touch
+    const clickedPos = getEvPos(ev)
+    const clickedLineIdx = isAlineClicked(clickedPos, gElCanvasContainer.offsetWidth)
+    if (clickedLineIdx === -1) return
+    setIsLineDrag(clickedLineIdx, true)
+    //Save the pos we start from 
+    gStartPos = clickedPos
+    gElCanvasContainer.style.cursor = 'grabbing'
 }
+
 function onMove(ev) {
-    console.log('Im from onMove')
+    //Get the ev pos from mouse or touch
+    if (lineDragIdx() === -1) return
+    // console.log('Im from onMove')
+    const pos = getEvPos(ev)
+    //Calc the delta , the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    //Save the last pos , we remember where we`ve been and move accordingly
+    gStartPos = pos
+    //The canvas is render again after every move
+    renderMeme()
 
 
 }
+
 function onUp(ev) {
-    console.log('Im from onUp')
-
+    const gMeme = getMeme()
+    if (lineDragIdx() === -1) return
+    // console.log('Im from onUp')
+    setIsLineDrag(lineDragIdx(), false)
+    repositionLineHighlighter((gMeme.lines[getSelectedLineIdx()].size + 10), (gMeme.lines[getSelectedLineIdx()].pos.y - (gMeme.lines[getSelectedLineIdx()].size)))
+    gElCanvasContainer.style.cursor = 'grab'
 }
 
+function getEvPos(ev) {
+
+    //Gets the offset pos , the default pos
+    let pos = {
+        x: ev.offsetX,
+        y: ev.clientY - 108 //canvas and highlighter are sons of canvas container and we need to get clicked pos acorrding to the container and not to the highlighter nor canvas. canvas container height is grater by 91 from canvas so we substract 91
+    }
+    // Check if its a touch ev
+    if (TOUCH_EVS.includes(ev.type)) {
+        //soo we will not trigger the mouse ev
+        ev.preventDefault()
+        //Gets the first touch point
+        ev = ev.changedTouches[0]
+        //Calc the right pos according to the touch screen
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+//
 
 function drawMemeTextLines() {
     const { lines } = getMeme()
@@ -100,7 +150,6 @@ function drawMemeTextLines() {
 }
 
 function drawText(lineIdx, lines) {
-    console.log(`lineIdx:`, lineIdx)
     const { color, strokeColor, font, pos, size, txt, direction } = lines[lineIdx]
     gCtx.font = `${size}px ${font}`
     gCtx.lineWidth = 2
@@ -119,7 +168,6 @@ function drawText(lineIdx, lines) {
         case 'end':
             gCtx.fillText(txt, gElCanvas.width - pos.x, pos.y) // Draws (fills) a given text at the given (x, y) position.
             gCtx.strokeText(txt, gElCanvas.width - pos.x, pos.y) // Draws (strokes) a given text at the given (x, y) position.
-
             break;
         case 'center':
             gCtx.fillText(txt, middleOfCanvas, pos.y) // Draws (fills) a given text at the given (x, y) position.
@@ -138,7 +186,6 @@ function resizeCanvas() {
 
     // Unless needed, better keep height fixed.
     // gElCanvas.height = gElCanvasContainer.offsetHeight
-    // renderMeme()
 }
 
 function handleNoLinesLeft() {
@@ -196,7 +243,8 @@ function onAddLine() {
     renderMeme()
     cursorsToPointer()
     enableBtns()
-
+    updatElCurrLineInputTxt(getMeme().lines[getSelectedLineIdx()].txt)
+    updatElCurrLineSelectFont(getMeme().lines[getSelectedLineIdx()].font)
 }
 
 function onRemoveLine() {
@@ -248,8 +296,10 @@ function onSetFill(evFillColor) {
     renderMeme()
 }
 
-// Drag and Drop
-
+// post btns
+function onUpload() {
+    document.querySelector('.share').style.cursor="pointer"
+}
 
 // hide meme section
 function hideMemeEditorSection() {

@@ -14,7 +14,7 @@ var gMeme = {
             pos: { x: 10, y: 40 },
             direction: 'start',
             isSelected: true,
-            isDrag: false
+            isDrag: false,
         },
         {
             txt: 'Enough of this shit!',
@@ -54,7 +54,6 @@ function switchSelectedLine() {
     gMeme.lines[currLineIdx].isSelected = false
     if (currLineIdx + 1 > gMeme.lines.length - 1) {
         gMeme.lines[0].isSelected = true
-        // repositionLineHighlighter((gMeme.lines[0].size + 10), 0)
     }
     else {
         gMeme.lines[currLineIdx + 1].isSelected = true
@@ -128,7 +127,7 @@ function setStrokeColor(strokeColor) {
 function downloadCanvas(elCanvas, elLink) {
     // Gets the canvas content and convert it to base64 data URL that can be save as an image
     const data = elCanvas.toDataURL(/* DEFAULT: 'image/png'*/) // Method returns a data URL containing a representation of the image in the format specified by the type parameter.
-    console.log('data', data) // Decoded the image to base64 
+    // console.log('data', data) // Decoded the image to base64 
     elLink.href = data // Put it on the link
     elLink.download = 'my-canvas' // Can change the name of the file
 }

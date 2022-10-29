@@ -4,22 +4,22 @@ var gImgs = [
     {
         id: 0,
         url: './images/meme-imgs (square)/0.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['trump', 'politics']
     },
     {
         id: 1,
         url: './images/meme-imgs (square)/1.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['animal', 'dog']
     },
     {
         id: 2,
         url: './images/meme-imgs (square)/2.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['animal', 'cat']
     },
     {
         id: 3,
         url: './images/meme-imgs (square)/3.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['baby', 'yes']
     },
     {
         id: 4,
@@ -92,9 +92,14 @@ var gImgs = [
         keywords: ['funny', 'cat']
     },
 ]
+var gDeepCopyGImgs = JSON.parse(JSON.stringify(gImgs))
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+function setFilterBy(filterBy) {
+    gImgs = JSON.parse(JSON.stringify(gDeepCopyGImgs))
+    gImgs = gImgs.filter((img) => img.keywords.some(keyword => keyword.includes(filterBy)))
+}
 
 // Getteres
 function getImgs() {
@@ -102,7 +107,7 @@ function getImgs() {
 }
 
 function getImgUrl(imgIdx) {
-    const img = gImgs.find(img=>img.id === imgIdx)
+    const img = gImgs.find(img => img.id === imgIdx)
     return img.url
 }
 

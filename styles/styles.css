@@ -21,7 +21,6 @@
 }
 
 /* TYPOGRAPHY */
-
 @font-face {
     font-family: playfair, 'Times New Roman', Times, serif;
     src: url(/fonts/Playfair/PlayfairDisplay-Regular.ttf);
@@ -42,7 +41,7 @@
     src: url(/fonts/Impact/impact.ttf);
 }
 
-/* Montserrat */
+/* montserrat */
 @font-face {
     font-family: montserrat-regular, Arial, Helvetica, sans-serif;
     src: url(/fonts/Montserrat/Montserrat-Regular.ttf);
@@ -70,21 +69,19 @@ html {
     font-family: montserrat-regular;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0 0 1em;
-}
-
 body {
     margin: 0;
 }
 
 img {
     width: 100%;
+}
+
+a,
+a:visited,
+a:active {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* HELPERS */
@@ -128,7 +125,6 @@ img {
 /* Layout */
 .main-layout {
     height: 100vh;
-
 }
 
 /* COMPONENTS */
@@ -141,7 +137,7 @@ img {
 /* header  */
 .main-header {
     background-color: var(--clr3);
-    padding: 0 50px;
+    padding: 0 10px;
 }
 
 /* main-nav */
@@ -161,21 +157,25 @@ img {
     cursor: not-allowed;
 }
 
-.main-header .main-nav a:hover:not(a.active) {
-    color: green;
+.main-nav a:hover:not(.active) {
+    color: var(--clr4);
 }
 
 .main-nav .seperator {
     color: var(--clr4);
 }
 
+/* Main Content */
+.main-content {
+    background-color: var(--clr2);
+}
 
 /* Image-Gallery */
 
 .image-gallery .gallery-header {
     min-height: 100px;
     background-color: var(--clr-2);
-
+    padding: 10px;
 }
 
 .image-gallery .gallery-header ul>*:not(:last-child) {
@@ -189,11 +189,10 @@ img {
 
 .image-gallery .image-gallery-area {
     display: grid;
-    padding: 20px 20px 10px 20px;
-    row-gap: 10px;
-    column-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    background-color: var(--clr2);
+    padding: 10px;
+    row-gap: 2.5px;
+    column-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .image-gallery .image-gallery-area img {
@@ -204,25 +203,31 @@ img {
 /* Meme-Editor */
 
 .meme-editor {
-    background-color: var(--clr2);
-    padding: 25px 0;
+    padding: 15px 0;
+}
+
+.editor-container {
+    align-items: center;
 }
 
 /* canvas */
 .canvas-container {
     aspect-ratio: 1 / 1;
     position: relative;
+    cursor: grab;
+    margin-bottom: 15px;
 }
 
 .canvas-container .line-highlighter {
-
     position: absolute;
     height: 50px;
-    border: 2px solid black;
+    border: 1px dashed black;
+    background-color: rgb(138, 138, 138, 40%);
     z-index: 10;
-    width: 500px;
+    width: 100%;
     top: 0;
 }
+
 
 /* control box */
 
@@ -230,17 +235,21 @@ img {
     min-width: 373px;
 }
 
-.control-box button, .control-box select {
+.control-box button,
+.control-box select {
     cursor: pointer;
     border-radius: 12px;
     border: none;
 }
 
-.control-box .meme-handlers button:not(:disabled), .control-box select:not(:disabled){
+.control-box .meme-handlers button:not(:disabled),
+.control-box select:not(:disabled) {
     background-color: var(--clr-2);
 }
 
-.control-box .meme-handlers button:disabled, .control-box select:disabled, .control-box .meme-handlers input:disabled {
+.control-box .meme-handlers button:disabled,
+.control-box select:disabled,
+.control-box .meme-handlers input:disabled {
     background-color: lightcoral;
 }
 
@@ -252,8 +261,9 @@ img {
     font-size: larger;
 }
 
-.control-box select, .control-box select  >* {
-font-family: montserrat-medium;
+.control-box select,
+.control-box select>* {
+    font-family: montserrat-medium;
 }
 
 .control-box .font-and-color input {
@@ -268,14 +278,22 @@ font-family: montserrat-medium;
 }
 
 .control-box .meme-handlers>* {
-    margin-bottom: 30px;
-    gap: 10px
+    margin-bottom: 18px;
+    gap: 18px
 }
 
 .control-box .meme-lines-control,
 .text-size-and-align,
 .font-and-color {
     gap: 18px;
+}
+
+.text-size-and-align {
+    flex-wrap: wrap;
+}
+
+.control-box select {
+    padding: 10px;
 }
 
 .control-box .fill-color-selector,
@@ -294,6 +312,20 @@ font-family: montserrat-medium;
     font-size: 1.25em;
     font-weight: 500;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.control-box button:not(:disabled):hover,
+.control-box select:not(:disabled):hover,
+.control-box input:not(:disabled):hover {
+    background-color: var(--clr4);
+}
+
+.user-msg {
+    margin: 0;
+    text-align: center;
+    height: 38px;
+    margin-top: 15px;
 }
 
 /* footer */
@@ -304,26 +336,68 @@ font-family: montserrat-medium;
 
 .main-footer p {
     font-family: montserrat-thin;
-    font-size: 1.1875em;
+    font-size: 1rem;
     color: var(--clr-2);
+    text-align: center;
+    padding-inline: 10px;
 }
 
 /* SMALL */
 @media (min-width: 640px) {
-
-    .main-layout>*:not(.full) {
+    .main-header {
+        padding: 0 15px;
     }
+
+    .image-gallery .image-gallery-area {
+        row-gap: 5px;
+        column-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 15px 15px;
+    }
+
+    .editor-container {
+        padding: 25px 25px;
+    }
+    .main-footer p {
+        font-size: 1.1875rem;
+    }
+    .canvas-container{
+        aspect-ratio: unset;
+        max-width: 600px;
+    }
+    
+
 }
 
 /* MEDIUM */
-@media (min-width: 900px) {
-    .editor-container {
-        flex-direction: row !important;
-        padding: 0 50px;
+@media (min-width: 940px) {
+    .main-header {
+        padding: 0px 25px;
     }
 
-    .image-gallery {
-        padding: 0 50px;
+    .image-gallery .gallery-header {
+        padding: 0 25px;
+        flex-direction: row !important;
+    }
+    
+
+    .image-gallery .image-gallery-area {
+        row-gap: 7.5px;
+        column-gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 25px 25px;
+    }
+
+    .editor-container {
+        align-items: unset;
+        flex-direction: row !important;
+        gap: 50px;
+        padding: 25px 25px;
+    }
+
+    .canvas-container {
+        margin-bottom: 0px;
+        max-width: 500px;
     }
 
     .meme-editor {
@@ -333,8 +407,23 @@ font-family: montserrat-medium;
 
 /* LARGE */
 @media (min-width: 1100px) {
+    .main-header {
+        padding: 0px 30px;
+    }
+
+    .image-gallery .gallery-header {
+        padding: 0 30px;
+        flex-direction: row !important;
+    }
+
     .image-gallery .image-gallery-area {
+        padding: 30px 30px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .canvas-container {
+        /* margin-bottom: 0px; */
+        min-width: 600px;
     }
 
 }

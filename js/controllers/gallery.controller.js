@@ -28,6 +28,11 @@ function onImgSelected(idx) {
     switchToMemeEditor(idx)
 }
 
+function onSetFilterBy(filterBy) {
+    setFilterBy(filterBy)
+    renderGallery()
+}
+
 function resizeKeyWords() {
     gKeywordSearchCountMap = getgKeywordSearchCountMap
     //Todo: replace key words from hard coded in html to rendom function with font size by the count map
