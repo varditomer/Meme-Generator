@@ -4,92 +4,110 @@ var gImgs = [
     {
         id: 0,
         url: './images/meme-imgs (square)/0.jpg',
-        keywords: ['trump', 'politics']
+        keywords: ['trump', 'politics'],
+        alt: 'trump'
     },
     {
         id: 1,
         url: './images/meme-imgs (square)/1.jpg',
-        keywords: ['animal', 'dog']
+        keywords: ['animal', 'dog', 'puppies'],
+        alt: 'cute puppies'
     },
     {
         id: 2,
         url: './images/meme-imgs (square)/2.jpg',
-        keywords: ['animal', 'cat']
+        keywords: ['animal', 'baby', 'dog', 'sleep'],
+        alt: 'cute sleeping baby and dog'
     },
     {
         id: 3,
         url: './images/meme-imgs (square)/3.jpg',
-        keywords: ['baby', 'yes']
+        keywords: ['animal', 'sleep', 'cat'],
+        alt: 'cat on computer'
     },
     {
         id: 4,
         url: './images/meme-imgs (square)/4.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['funny', 'yeah', 'baby'],
+        alt: 'baby with serious face'
     },
     {
         id: 5,
         url: './images/meme-imgs (square)/5.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['you know it', 'hands'],
+        alt: 'you know it',
     },
     {
         id: 6,
         url: './images/meme-imgs (square)/6.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['baby', 'surprise', 'funny'],
+        alt: 'baby looks surprised'
     },
     {
         id: 7,
         url: './images/meme-imgs (square)/7.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['chocolate', 'film'],
+        alt: `charlie's chocolate factory`
     },
     {
         id: 8,
         url: './images/meme-imgs (square)/8.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['funny', 'baby', 'hands'],
+        alt: 'funny baby'
     },
     {
         id: 9,
         url: './images/meme-imgs (square)/9.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['obama', 'politics'],
+        alt: 'obama'
     },
     {
         id: 10,
         url: './images/meme-imgs (square)/10.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['sport', 'basketball', 'kiss'],
+        alt: 'basketball players kissing'
     },
     {
         id: 11,
         url: './images/meme-imgs (square)/11.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['tv', 'haim', 'hands'],
+        alt: 'haim heht'
     },
     {
         id: 12,
         url: './images/meme-imgs (square)/12.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['leonardo dicaprio', 'film', 'actor', 'wolf of wall street', 'hands'],
+        alt: 'leonardo dicaprio wolf of wall street'
     },
     {
         id: 13,
         url: './images/meme-imgs (square)/13.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['film', 'actor', 'matrix'],
+        alt: 'matrix'
     },
     {
         id: 14,
         url: './images/meme-imgs (square)/14.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['tv', 'game of throne', 'actor'],
+        alt: 'game of throne'
     },
     {
         id: 15,
         url: './images/meme-imgs (square)/15.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['film', 'actor', 'hands'],
+        alt: 'film'
     },
     {
         id: 16,
         url: './images/meme-imgs (square)/16.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['vladimir putin', 'politics', 'hands'],
+        alt: 'vladimir putin'
     },
     {
         id: 17,
         url: './images/meme-imgs (square)/17.jpg',
-        keywords: ['funny', 'cat']
+        keywords: ['toy story', 'film', 'hands'],
+        alt: 'toy story'
     },
 ]
 var gDeepCopyGImgs = JSON.parse(JSON.stringify(gImgs))
