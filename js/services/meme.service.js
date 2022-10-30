@@ -5,7 +5,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: '1st Line',
             size: 40,
             font: 'impact',
             align: 'left',
@@ -17,7 +17,7 @@ var gMeme = {
             isDrag: false,
         },
         {
-            txt: 'Enough of this shit!',
+            txt: '2nd Line',
             size: 40,
             font: 'impact',
             align: 'left',
@@ -26,7 +26,7 @@ var gMeme = {
             pos: { x: 10, y: 470 },
             direction: 'start',
             isSelected: false,
-            isDrag: false            
+            isDrag: false
         }
     ]
 }
@@ -64,7 +64,7 @@ function switchSelectedLine() {
 function addLine(canvasHeight) {
     if (gMeme.lines.length === 3) return
     const newLine = {
-        txt: 'I sometimes eat Falafel',
+        txt: 'Another Line',
         size: 40,
         font: 'impact',
         align: 'left',
