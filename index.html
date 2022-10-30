@@ -35,17 +35,17 @@
 
             <section class="meme-editor hide">
 
-                <div class="editor-container flex col space-evenly">
+                <div class="editor-container flex col space-between">
 
                     <div class="canvas-container">
                         <div class="line-highlighter"></div>
-                        <canvas id="my-canvas" height="500" width="500"></canvas>
+                        <canvas id="my-canvas" height="300" width="300"></canvas>
                     </div>
                     <div class="control-box flex col space-between">
 
                         <div class="meme-handlers">
                             <div class="meme-lines flex col center">
-                                <input type="text" class="meme-txt" placeholder="I sometimes eat Falafel"
+                                <input type="text" class="meme-txt" placeholder="1st Line..."
                                     oninput="onInputMemeLineText(event)">
                                 <div class="meme-lines-control flex center">
                                     <button class="switch" title="switch selected line" onclick="onSwitchLine()"><img
@@ -110,17 +110,12 @@
                             <button class="download" title="download canvas"><a href="#"
                                     onclick="onDownloadCanvas(this)" download="file-name">Download</a>
                             </button>
-                            <button class="upload" title="upload canvas"
-                                onclick="uploadImg(); onUpload()">Upload</button>
+                            <!-- <button class="upload" title="upload canvas"
+                                onclick="uploadImg(); onUpload()">Upload</button> -->
                             <button class="share" title="share: first click upload">Share</button>
                         </div>
-
                     </div>
-
                 </div>
-
-                <p class="user-msg"></p>
-
             </section>
 
         </main>

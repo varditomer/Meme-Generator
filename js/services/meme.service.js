@@ -141,6 +141,16 @@ function getSelectedLineIdx() {
     return gMeme.lines.findIndex(line => line.isSelected)
 }
 
+function setSelectedLineIdx(selectedLineIdx) {
+    const currSelectedLineIdx = getSelectedLineIdx()
+    gMeme.lines[currSelectedLineIdx].isSelected = false
+    gMeme.lines[selectedLineIdx].isSelected = true
+}
+
+function getSelectedLineIdx() {
+    return gMeme.lines.findIndex(line => line.isSelected)
+}
+
 function deepCoppyGmeme() {
     gdeepCoppyGmeme = JSON.parse(JSON.stringify(gMeme));
 }

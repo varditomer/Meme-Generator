@@ -17,7 +17,7 @@ function initMeme(imgIdx) {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
     gElLineHighlighter = gElCanvasContainer.querySelector('.line-highlighter')
-    document.querySelector('.share').style.cursor="not-allowed"
+    uploadImg()
 
 
 
@@ -62,6 +62,7 @@ function addListeners() {
     //Listen for resize ev 
     window.addEventListener('resize', () => {
         resizeCanvas()
+        updateLineHeight(gElCanvasContainer.offsetHeight)
         renderMeme()
     })
 }
@@ -87,7 +88,11 @@ function onDown(ev) {
     const clickedLineIdx = isAlineClicked(clickedPos, gElCanvasContainer.offsetWidth)
     if (clickedLineIdx === -1) return
     setIsLineDrag(clickedLineIdx, true)
-    //Save the pos we start from 
+    setSelectedLineIdx(clickedLineIdx)
+    repositionLineHighlighter((gMeme.lines[clickedLineIdx].size + 10), (gMeme.lines[clickedLineIdx].pos.y - (gMeme.lines[clickedLineIdx].size)))
+    updatElCurrLineInputTxt(getMeme().lines[getSelectedLineIdx()].txt)
+    updatElCurrLineSelectFont(getMeme().lines[getSelectedLineIdx()].font)
+    //Save the pos we start from
     gStartPos = clickedPos
     gElCanvasContainer.style.cursor = 'grabbing'
 }
@@ -100,6 +105,7 @@ function onMove(ev) {
     //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
+    repositionLineHighlighter(gMeme.lines[getSelectedLineIdx()].size + 10, gMeme.lines[getSelectedLineIdx()].pos.y + dy - gMeme.lines[getSelectedLineIdx()].size)
     moveLine(dx, dy)
     //Save the last pos , we remember where we`ve been and move accordingly
     gStartPos = pos
@@ -133,8 +139,8 @@ function getEvPos(ev) {
         ev = ev.changedTouches[0]
         //Calc the right pos according to the touch screen
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft - 40,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop - 80
         }
     }
     return pos
@@ -185,7 +191,7 @@ function resizeCanvas() {
     gElCanvas.width = gElCanvasContainer.offsetWidth
 
     // Unless needed, better keep height fixed.
-    // gElCanvas.height = gElCanvasContainer.offsetHeight
+    gElCanvas.height = gElCanvasContainer.offsetHeight
 }
 
 function handleNoLinesLeft() {
@@ -294,11 +300,6 @@ function onSetFill(evFillColor) {
     if (!getMeme().lines.length) return
     setFillColor(evFillColor.target.value)
     renderMeme()
-}
-
-// post btns
-function onUpload() {
-    document.querySelector('.share').style.cursor="pointer"
 }
 
 // hide meme section
